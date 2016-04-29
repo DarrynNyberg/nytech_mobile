@@ -1,0 +1,38 @@
+<?php
+
+/**
+	* Implements hook_theme().
+*/
+function nytech_mobile_theme($existing, $type, $theme, $path) {
+	$theme = array();
+	$theme['mobile_header'] = array(
+        'template' => 'templates/mobile-header',
+	);
+	return $theme;
+}
+
+function nytech_mobile_preprocess_html(&$variables) {
+	$js = '
+		var $ = jQuery.noConflict();
+		$(".toggle-menu").click(function() {
+		    $(".menu-block").toggleClass("in out")
+		});
+		
+		$(".toggle-settings").click(function() {
+		    $(".settings-block").toggleClass("in out")
+		    $(".see-through").toggleClass("in out")
+		});
+		$(".see-through").click(function() {
+		    $(".settings-block").toggleClass("in out")
+		    $(".see-through").toggleClass("in out")
+		});
+	';
+	
+	drupal_add_js($js, array(
+		'type' => 'inline', 
+		'scope' => 'footer', 
+		'weight' => 10
+	));
+	
+	return $variables;
+}

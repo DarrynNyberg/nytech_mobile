@@ -1,0 +1,8 @@
+name = NyTech Mobile
+description = Tools for creating mobile web UI.
+core = 7.x
+package = NyTech
+dependencies[] = fontawesome:fontawesome
+files[] = nytech_mobile.module
+stylesheets[all][] = css/nytech_mobile.css
+scripts[] = js/nytech_mobile.js
